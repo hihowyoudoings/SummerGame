@@ -94,19 +94,54 @@ public class Fight : MonoBehaviour {
                 }
                 if (!exists) {
                     ailments.Add(new List<int>(3));
-                    ailments[0].Add(1);
-                    ailments[0].Add(movePower / 25);
-                    ailments[0].Add(0);
+                    ailments[^1].Add(1);
+                    ailments[^1].Add(movePower / 25);
+                    ailments[^1].Add(0);
                 }
 
             }
-            if (!player) {
-                playerAilments = ailments;
+        }
+        if (moveType == 2) {
+            damage -= (attack * (movePower + Random.Range(-20, 21)) / 100 - defence);
+            for (int i = 0; i < ailments.Count; i++) {
+                 if (ailments[i][0] == 1) {
+                    ailments[i][2] += (15 * movePower / 25);
+                    exists = true;
+                }
             }
-            else {
-                enemyAilments = ailments;
+            if (!exists) {
+                ailments.Add(new List<int>(3));
+                ailments[^1].Add(2);
+                ailments[^1].Add(15);
+                ailments[^1].Add(15 * movePower / 25);
             }
         }
+        if (moveType == 3) {
+            damage -= (attack * (movePower + Random.Range(-20, 21)) / 100);
+        }
+        if (moveType == 4) {
+            damage -= (attack * (movePower + Random.Range(-20, 21)) / 100 - defence);
+            for (int i = 0; i < ailments.Count; i++) {
+                 if (ailments[i][0] == 1) {
+                    ailments[i][1] += (3);
+                    exists = true;
+                }
+            }
+            if (!exists) {
+                ailments.Add(new List<int>(3));
+                ailments[^1].Add(3);
+                ailments[^1].Add(3);
+                ailments[^1].Add(10 * movePower / 25);
+            }
+        }
+
+        if (!player) {
+            playerAilments = ailments;
+        }
+        else {
+            enemyAilments = ailments;
+        }
+        
         Debug.Log(damage);
         return damage;
     }
@@ -118,14 +153,16 @@ public class Fight : MonoBehaviour {
                 Player.health -= ailment[2];
                 TextUI.bottomText = "You take " + ailment[2] + " damage from poison";
             } else {
+                Enemy.health -= ailment[2];
                 TextUI.bottomText = "The " + Enemies.enemyName + " takes " + ailment[2] + " damage from poison";
             }
         } if (ailment[0] == 2) {
             ailment[2] -= ailment[1];
             if (player) { 
-                Player.health -= ailment[2];
+                Player.health -= (ailment[2] - Player.defence);
                 TextUI.bottomText = "You take " + ailment[2] + " damage from burning alive";
             } else {
+                Enemy.health -= (ailment[2] - Enemy.defence);
                 TextUI.bottomText = "The " + Enemies.enemyName + " takes " + ailment[2] + " damage from burning alive";
             } 
         }
