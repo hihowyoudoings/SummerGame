@@ -146,7 +146,7 @@ public class Fight : MonoBehaviour {
         return damage;
     }
 
-    public static void Ailments(bool player, List<int> ailment) {
+    public static Lint<int> Ailments(bool player, List<int> ailment) {
         if (ailment[0] == 1) {
             ailment[2] += ailment[1];
             if (player) { 
@@ -165,8 +165,16 @@ public class Fight : MonoBehaviour {
                 Enemy.health -= (ailment[2] - Enemy.defence);
                 TextUI.bottomText = "The " + Enemies.enemyName + " takes " + ailment[2] + " damage from burning alive";
             } 
+        } if (ailment[0] == 3){
+            ailment[1] -= 1;
+            if (player) { 
+                Player.health -= (ailment[2]);
+                TextUI.bottomText = "You take " + ailment[2] + " damage from bleeding";
+            } else {
+                Enemy.health -= (ailment[2] - Enemy.defence);
+                TextUI.bottomText = "The " + Enemies.enemyName + " takes " + ailment[2] + " damage from bleeding";
         }
-        Debug.Log("yes yes yes yes");
+        return ailment;
     }
 
     private static int move = 0;
