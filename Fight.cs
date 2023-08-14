@@ -117,7 +117,17 @@ public class Fight : MonoBehaviour {
             if (player) { 
                 Player.health -= ailment[2];
                 TextUI.bottomText = "You take " + ailment[2] + " damage from poison";
+            } else {
+                TextUI.bottomText = "The " + Enemies.enemyName + " takes " + ailment[2] + " damage from poison";
             }
+        } if (ailment[0] == 2) {
+            ailment[2] -= ailment[1];
+            if (player) { 
+                Player.health -= ailment[2];
+                TextUI.bottomText = "You take " + ailment[2] + " damage from burning alive";
+            } else {
+                TextUI.bottomText = "The " + Enemies.enemyName + " takes " + ailment[2] + " damage from burning alive";
+            } 
         }
         Debug.Log("yes yes yes yes");
     }
