@@ -121,18 +121,20 @@ public class Fight : MonoBehaviour {
         }
         if (moveType == 4) {
             damage -= (attack * (movePower + Random.Range(-20, 21)) / 100 - defence);
-            for (int i = 0; i < ailments.Count; i++) {
-                 if (ailments[i][0] == 1) {
-                    ailments[i][1] += (3);
-                    exists = true;
+             if (damage < 0) {
+                for (int i = 0; i < ailments.Count; i++) {
+                     if (ailments[i][0] == 1) {
+                        ailments[i][1] += (3);
+                        exists = true;
+                    }
                 }
-            }
-            if (!exists) {
-                ailments.Add(new List<int>(3));
-                ailments[^1].Add(3);
-                ailments[^1].Add(3);
-                ailments[^1].Add(10 * movePower / 25);
-            }
+                if (!exists) {
+                    ailments.Add(new List<int>(3));
+                    ailments[^1].Add(3);
+                    ailments[^1].Add(3);
+                    ailments[^1].Add(10 * movePower / 25);
+                }
+             }
         }
 
         if (!player) {
