@@ -10,7 +10,9 @@ public class Enemies : MonoBehaviour {
         /*Area2 difficulty 2*/ {"Small Golem",20,14,15},{"Lion",13,17,12},{"Skunk",10,10,10},{"Crocodile",12,15,15},
         /*Area2 difficulty 3*/ {"Golem",30,20,20},{"Elephant",40,20,10},{"Giraffe",20,25,10},{"Hunter",10,30,12}
         /*Area3 difficulty 1*/ {"Ghoul",12,12,8},{"Ghost",2,20,2},{"Giagantic Snail",10,12,10},{"Dark",20,8,9},
-        /*Area3 difficulty 2*/ {"Vampire",10,15,12},};
+        /*Area3 difficulty 2*/ {"Vampire",10,15,12},{"Imp",14,15,13},{"Poison Slime",15,14,15},{"Big Foot",17,17,15},
+        /*Area3 difficulty 3*/{"Pure Blood",25,20,17},{"Demon",20,20,20},{"Witch",15,20,10},{"Ogre",30,25,15}
+        /*Area4 difficulty 1*/{""}};
 
     public static object[,] moves = { { "testmove",40, 0, "a test-tacular move" }, { "testmove2",80, 1, "a test-tacular move squared" } };
 
