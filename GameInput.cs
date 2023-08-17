@@ -12,37 +12,49 @@ public class GameInput : MonoBehaviour
             if (TextUI.warning != "") {
                 TextUI.warning = "";
             }
+            if (Fight.state == Fight.FightState.Wait) {
+                TextUI.bottomText = "Please pick a move";
+            }
             else if (Fight.state != Fight.FightState.None & Fight.state != Fight.FightState.Wait) {
                 
                 if (afterTurn) {
                     if (Fight.state == Fight.FightState.Player) {
-                        Debug.Log("Interact");
                         if (ailment < Fight.playerAilments.Count) {
-                            Fight.Ailments(true, Fight.playerAilments[ailment]);
-                            ailment++;
-                            Debug.Log("Yes Ailments");
+                            Fight.playerAilments[ailment] = Fight.Ailments(true, Fight.playerAilments[ailment]);
+                            if (Fight.playerAilments[ailment][0]== -1) {
+                                Fight.playerAilments.RemoveAt(ailment);
+                            }
+                            else {
+                                ailment++;
+                            }
                         }
                         else {
-                            Debug.Log("No Ailments");
                             afterTurn = false;
                             ailment = 0;
+                            Interact(context);
                         }
                     }
                     else if (Fight.state == Fight.FightState.Enemy) {
                         if (ailment < Fight.enemyAilments.Count) {
-                            Fight.Ailments(false, Fight.enemyAilments[ailment]);
-                            ailment++;
+                            Fight.enemyAilments[ailment] = Fight.Ailments(false, Fight.enemyAilments[ailment]);
+                            if (Fight.enemyAilments[ailment][0] == -1) {
+                                Fight.enemyAilments.RemoveAt(ailment);
+                            }
+                            else {
+                                ailment++;
+                            }
                         }
                         else {
                             afterTurn = false;
                             ailment = 0;
+                            Interact(context);
                         }
                     }
-                }
-                else {
+                } if (!afterTurn) {
                     Fight.Attack();
                     afterTurn = true;
                 }
+                
                 
 
             }
