@@ -18,12 +18,13 @@ public class Rooms : MonoBehaviour
         }
         Debug.Log(room1 + " " + room2);
     }
+    public int eventType;
     public void Room1() {
         Enemies.ChooseEnemy(room1,area);
-        Events.ChooseEvent();
+        eventType = Events.ChooseEvent();
     }
     public void Room2() {
         Enemies.ChooseEnemy(room2, area);
-        Events.ChooseEvent();
+        eventType = Events.ChooseEvent();
     }
 }
