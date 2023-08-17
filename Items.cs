@@ -54,6 +54,5 @@ public class Items : MonoBehaviour
         if (slot1 != -1){
             
         }
-        }
     }
 }
