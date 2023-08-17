@@ -20,8 +20,10 @@ public class Rooms : MonoBehaviour
     }
     public void Room1() {
         Enemies.ChooseEnemy(room1,area);
+        Events.ChooseEvent();
     }
     public void Room2() {
         Enemies.ChooseEnemy(room2, area);
+        Events.ChooseEvent();
     }
 }
