@@ -48,6 +48,12 @@ public class Items : MonoBehaviour
         }
         else{
             TextUI.warning = "You must remove an item first";
+        }   
+    }
+    public void Item1(){
+        if (slot1 != -1){
+            
+        }
         }
     }
 }
