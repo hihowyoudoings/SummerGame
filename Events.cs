@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Events : MonoBehaviour
 {
+    public void ChooseEvent(){
+        return eventType = Random.Range(0,3);
+    
     private void Chest(int difficulty, int area) {
         int[] items;
         if (area == 0) {
