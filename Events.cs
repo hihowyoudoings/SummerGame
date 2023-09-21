@@ -68,7 +68,8 @@ public class Events : MonoBehaviour
     }
     private void chest(int difficulty, int area){
         int[] items = LootBox(difficulty, area);
-        item = items[]
+        item = items[Random.Range(0,items.Length)];
+        return item;
         
     }
 }
