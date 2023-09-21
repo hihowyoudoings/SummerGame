@@ -85,4 +85,15 @@ public class Events : MonoBehaviour
         }
         return option1, option2, option3;
     }
+    private void SoulShop(){
+        option1 = Random.Range(0,14);
+        option2 = Random.Range(0,14);
+        while (option1 == option 2){
+            option2 = Random.Range(0,14);
+        }
+        option3 = Random.Range(0,14);
+        while ((option1 == option3) || (option2 == option3)){
+            option = Random.Range(0,14)
+        }
+    }
 }
