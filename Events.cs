@@ -93,7 +93,7 @@ public class Events : MonoBehaviour
         }
         int option3 = Random.Range(0,14);
         while ((option1 == option3) || (option2 == option3)){
-            option = Random.Range(0,14)
+            option = Random.Range(0,14);
         }
         return [option1, option2, option3];
     }
