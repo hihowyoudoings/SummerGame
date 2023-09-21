@@ -66,10 +66,23 @@ public class Events : MonoBehaviour
         }
         return items;
     }
-    private void chest(int difficulty, int area){
+    private void Chest(int difficulty, int area){
         int[] items = LootBox(difficulty, area);
         item = items[Random.Range(0,items.Length)];
         return item;
         
+    }
+    private void CoinShop(int difficulty, int area){
+        int[] items = LootBox(difficulty, area);
+        option1 = items[Random.Range(0,items.Length)];
+        option2 = items[Random.Range(0,items.Length)];
+        while (option1 == option2){
+            option2 = items[Random.Range(0,items.Length)];
+        }
+        option3 = items[Random.Range(0,items.Length)];
+        while ((option1 == option3) || (option2 == option3)){
+            option3 = items[Random.Range(0,items.Length)];
+        }
+        return option1, option2, option3;
     }
 }
