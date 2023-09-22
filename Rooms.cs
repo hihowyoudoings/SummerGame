@@ -25,6 +25,13 @@ public class Rooms : MonoBehaviour
     }
     public void Room2() {
         Enemies.ChooseEnemy(room2, area);
-        eventType = Events.ChooseEvent();
+        eventType = Events.ChooseEvent(); 
     }
+    /* AreaThingy() 
+    needs to call events based on the chosen eventType
+    call button thingy that you set up
+    needs to call rooms 
+    needs to call fight
+    uding buttons
+    */
 }
