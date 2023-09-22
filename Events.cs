@@ -7,7 +7,7 @@ public class Events : MonoBehaviour
     public void ChooseEvent(){
         return eventType = Random.Range(0,3);
     
-    private void LootBox(int difficulty, int area) {
+    private int[] LootBox(int difficulty, int area) {
         int[] items;
         if (area == 0) {
             if (difficulty == 0) {
